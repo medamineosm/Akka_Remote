@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/Akka_Crawler_Application.iml" filepath="$PROJECT_DIR$/.idea/Akka_Crawler_Application.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Master/.idea/modules/master.iml" filepath="$PROJECT_DIR$/Master/.idea/modules/master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Master/.idea/modules/master-build.iml" filepath="$PROJECT_DIR$/Master/.idea/modules/master-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ParserRemote/.idea/modules/parserremote.iml" filepath="$PROJECT_DIR$/ParserRemote/.idea/modules/parserremote.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ParserRemote/.idea/modules/parserremote-build.iml" filepath="$PROJECT_DIR$/ParserRemote/.idea/modules/parserremote-build.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ScrapperRemote/.idea/modules/scrapperremote.iml" filepath="$PROJECT_DIR$/ScrapperRemote/.idea/modules/scrapperremote.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ScrapperRemote/.idea/modules/scrapperremote-build.iml" filepath="$PROJECT_DIR$/ScrapperRemote/.idea/modules/scrapperremote-build.iml" />
+    </modules>
+  </component>
+</project>
