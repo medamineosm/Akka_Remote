@@ -9,7 +9,7 @@ import akka.actor.{Actor, ActorLogging, AllForOneStrategy}
   */
 class ParserActor extends Actor with ActorLogging{
 
-  val remoteMaster = context.actorSelection("akka.tcp://CrawlingSystem@127.0.0.1:5555/user/MasterActor")
+  val remoteMaster = context.actorSelection("akka.tcp://CrawlingSystem@192.168.0.104:5555/user/MasterActor")
   var canParse: Boolean = true
 
   override def preStart(): Unit = log.info("ParserActor Starting ...")
