@@ -2,7 +2,7 @@ package Actors
 
 import java.net.URL
 
-import Actors.Messages.{addParsedUrls, crawl, scrap}
+import Actors.Messages.{addParsedUrls, crawl, scrap, stopParse}
 import Core.Models.Models.Link
 import akka.actor.SupervisorStrategy.{Restart, Stop}
 import akka.actor.{Actor, ActorLogging, AllForOneStrategy}
@@ -15,7 +15,7 @@ import scala.collection.mutable
 class MasterActor extends Actor with ActorLogging{
 
   // create the remote actor
-  val remoteScrapper = context.actorSelection("akka.tcp://CrawlingSystem@127.0.0.1:5150/user/ScrapperActor")
+  val remoteScrapper = context.actorSelection("akka.tcp://CrawlingSystem@192.168.0.104:5150/user/ScrapperActor")
   var maxUrls = 0
   var rootDomaine: String = ""
 
@@ -50,6 +50,7 @@ class MasterActor extends Actor with ActorLogging{
         log.debug("urlToScrap Stack size : " + urlToScrap.size)
         sendUrl(depth, maxUrls)
       }else{
+        sender  ! stopParse
         log.info("Max Urls limit reached - ["+maxUrls+"] ")
         timeStop = System.currentTimeMillis
         log.info("Elpased Time : " + (timeStop - timeStart)/1000 + " secs")

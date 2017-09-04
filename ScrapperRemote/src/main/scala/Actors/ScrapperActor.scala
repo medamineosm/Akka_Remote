@@ -12,7 +12,7 @@ import org.jsoup.{Connection, Jsoup}
   */
 class ScrapperActor extends Actor with ActorLogging {
 
-  val remoteParser = context.actorSelection("akka.tcp://CrawlingSystem@127.0.0.1:5151/user/ParserActor")
+  val remoteParser = context.actorSelection("akka.tcp://CrawlingSystem@192.168.0.101:5151/user/ParserActor")
   var maxUrls = 0
   override def preStart(): Unit = log.info("ScrapperActor Starting ...")
 

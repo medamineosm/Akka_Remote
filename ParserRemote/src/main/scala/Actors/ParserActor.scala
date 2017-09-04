@@ -10,6 +10,7 @@ import akka.actor.{Actor, ActorLogging, AllForOneStrategy}
 class ParserActor extends Actor with ActorLogging{
 
   val remoteMaster = context.actorSelection("akka.tcp://CrawlingSystem@127.0.0.1:5555/user/MasterActor")
+  var canParse: Boolean = true
 
   override def preStart(): Unit = log.info("ParserActor Starting ...")
   override val supervisorStrategy =
@@ -18,12 +19,14 @@ class ParserActor extends Actor with ActorLogging{
     }
 
   override def receive: Receive = {
-
+    case stopParse => canParse = false
     case parse(response, depth) =>
-      log.info("Parser Actor will parse the content of url : [" + response.status + "] " + response.url)
-      val parsedPage = Parser.parse(response.html)
-      log.info("["+response.status+"]["+response.url+"] Links found : " + parsedPage.links.size)
-      remoteMaster ! addParsedUrls(parsedPage.links, depth+1)
+      if(canParse) {
+        log.info("Parser Actor will parse the content of url : [" + response.status + "] " + response.url)
+        val parsedPage = Parser.parse(response.html)
+        log.info("["+response.status+"]["+response.url+"] Links found : " + parsedPage.links.size)
+        remoteMaster ! addParsedUrls(parsedPage.links, depth+1)
+      }
   }
 
 

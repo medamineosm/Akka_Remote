@@ -8,4 +8,5 @@ import Core.Models.Models.{Link, ScrapResponse}
 object Messages {
   case class parse(response: ScrapResponse, depth: Int)
   case class addParsedUrls(links: Seq[Link], depth: Int)
+  case class stopParse();
 }
